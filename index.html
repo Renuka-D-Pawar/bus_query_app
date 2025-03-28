@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+    <link rel="stylesheet" href="complaint_app.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Submit Your Complaint</h2>
+        <form id="complaintForm" action="https://formsubmit.co/el/tadafi" method="POST" onsubmit="return showSuccessMessage(event)">
+            <input type="hidden" name="_subject" value="New Complaint Received">
+            <input type="hidden" name="_captcha" value="false">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Complaint:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="thank-you-message" style="display: none;">
+            <h2>✅ Complaint Submitted Successfully!</h2>
+            <p>Thank you for your complaint. We will review it soon.</p>
+            <a href="index.html"><button>Back to Home</button></a>
+        </div>
+    </div>
+
+    <script>
+        function showSuccessMessage(event) {
+            event.preventDefault();
+            document.getElementById("complaintForm").style.display = "none";
+            document.getElementById("thank-you-message").style.display = "block";
+            return false; // Prevent actual form submission
+        }
+    </script>
+</body>
+</html>
+
+
+
